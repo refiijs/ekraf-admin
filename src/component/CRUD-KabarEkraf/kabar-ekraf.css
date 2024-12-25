@@ -1,0 +1,304 @@
+/* Container Styling */
+.form-news-container {
+  max-width: 1200px; /* Batas lebar container */
+  margin: 0 auto; /* Memusatkan container */
+  padding: 120px;
+  box-sizing: border-box;
+  border-radius: 10px; /* Tepi melengkung */
+}
+
+/* ITEM LIST */
+.news-list {
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.news-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: var(--menu-bg-color);
+  border-radius: 5px;
+  box-shadow: 0 1px 2px var(--shadow-color);
+}
+
+/* ITEM DETAILS */
+.news-image {
+  width: 70px;
+  height: 70px;
+  background-color: #eaeaea;
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.news-info {
+  flex-grow: 1;
+  margin-left: 20px;
+  font-size: 16px;
+}
+
+/* Tombol aksi */
+.news-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-btn,
+.delete-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  background-color: transparent;
+}
+
+.edit-btn {
+  color: #263642;
+}
+
+.edit-btn:hover {
+  transform: scale(1.1);
+}
+
+.delete-btn {
+  color: #dc3545;
+}
+
+.delete-btn:hover {
+  transform: scale(1.1);
+}
+/* Title Styling */
+.form-news-title {
+  font-weight: bold;
+  font-size: 1.8rem;
+  color: #263642;
+  margin-bottom: 20px;
+  text-align: left;
+  border-bottom: 2px solid #263642;
+  padding-bottom: 10px;
+}
+
+/* Form Styling */
+.form-news {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+}
+
+/* Grid Layout */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.col-md-4 {
+  flex: 1;
+  min-width: 250px; /* Lebar minimum kolom */
+}
+
+/* Label Styling */
+.form-news label {
+  font-weight: bold;
+  color: #555;
+}
+
+/* Input and Textarea Styling */
+.form-news input,
+.form-news textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #dcdcdc;
+  box-sizing: border-box;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.form-news textarea {
+  resize: none;
+  min-height: 100px;
+}
+
+/* Button Styling */
+.form-news-button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #263642;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 14px;
+}
+
+.form-news-button:hover {
+  background-color: #34577c;
+}
+
+.modal-dialog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Membuat modal selalu terpusat secara vertikal */
+}
+
+.modal-content {
+  border-radius: 8px; /* Membuat tepi modal sedikit membulat */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Menambahkan bayangan agar modal terlihat lebih menonjol */
+}
+
+/* Styling untuk judul modal */
+.modal-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #28a745; /* Warna teks hijau untuk modal berhasil */
+}
+
+/* Styling untuk body modal */
+.modal-body {
+  font-size: 16px;
+  color: #333;
+  padding: 20px;
+  text-align: center; /* Memusatkan teks di modal body */
+}
+
+/* Styling untuk tombol Oke di modal */
+.modal-footer {
+  justify-content: center; /* Memastikan tombol di tengah footer modal */
+}
+
+.modal-footer .btn-primary {
+  background-color: #28a745; /* Warna hijau untuk tombol Oke */
+  border-color: #28a745;
+  padding: 10px 20px; /* Membuat tombol lebih besar */
+  font-size: 16px; /* Ukuran font lebih besar */
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Efek hover dan klik untuk tombol Oke */
+.modal-footer .btn-primary:hover {
+  background-color: #218838;
+  border-color: #218838;
+  transform: scale(1.05); /* Membuat tombol sedikit membesar saat di-hover */
+}
+
+.modal-footer .btn-primary:active {
+  background-color: #1e7e34;
+  border-color: #1c7430;
+  transform: scale(0.98); /* Efek menekan saat tombol di-klik */
+}
+
+.modal-body i {
+  display: block;
+  margin: 0 auto 10px; /* Mengatur posisi ikon di tengah */
+}
+
+.modal-body p {
+  text-align: center;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column; /* Tumpuk elemen secara vertikal */
+  }
+
+  .col-md-4 {
+    min-width: 100%; /* Kolom mengambil seluruh lebar layar */
+  }
+
+  .form-news-container {
+    padding: 15px;
+  }
+}
+
+/* Detail Kabar */
+.detail-kabar-container {
+  max-width: 800px;
+  margin: 120px auto;
+  padding: 80px 20px;
+  background-color: #ffffff;
+  border: 1px solid #edeeee;
+  border-radius: 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.detail-kabar-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #343a40; /* Warna teks */
+  text-align: center;
+}
+
+.detail-kabar-category {
+  font-size: 1rem;
+  color: #6c757d; /* Warna teks sekunder */
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.detail-kabar-date {
+  font-size: 0.9rem;
+  color: #6c757d;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.detail-kabar-image {
+  display: block;
+  max-width: 60%;
+  height: auto;
+  margin: 0 auto 20px auto; /* Sentralisasi gambar */
+  border-radius: 5px; /* Membuat sudut gambar membulat */
+}
+
+.detail-kabar-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #495057; /* Warna teks deskripsi */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.detail-kabar-instagram {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff; /* Warna teks putih */
+  background-color: #e4405f; /* Warna merah muda khas Instagram */
+  padding: 10px 40px;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.detail-kabar-instagram:hover {
+  background-color: #e05858; /* Warna hover Instagram */
+}

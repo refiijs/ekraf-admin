@@ -1,0 +1,122 @@
+/* Layout Wrapper */
+.container {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f9fc; /* Warna latar belakang halaman */
+}
+
+.wrapper {
+  display: flex;
+  width: 80%;
+  max-width: 1000px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Left Section (Image or Logo) */
+.left-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1f3f9; /* Warna latar belakang bagian kiri */
+}
+
+.left-section img {
+  max-width: 110%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Right Section (Form) */
+.right-section {
+  flex: 1;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ffffff;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+/* Input group styles */
+.input-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.input-group .form-control {
+  width: 0%;
+  padding: 12px 15px;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: #fdfdfd;
+  transition: all 0.3s ease;
+}
+
+.input-group .form-control:focus {
+  border-color: #263642;
+  box-shadow: 0 0 0 0.2rem rgba(38, 54, 66, 0.25);
+  outline: none;
+}
+.input-group-append {
+  display: flex;
+  align-items: center;
+  background-color: #f8f9fa; /* Warna latar belakang untuk teks input */
+  border: 1px solid #ced4da; /* Warna border */
+  border-left: none; /* Hilangkan border kiri untuk menyatu dengan input */
+  padding: 0.6rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.input-group-text {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: none;
+  padding: 0;
+  color: #495057; /* Warna ikon */
+  font-size: 1rem; /* Ukuran ikon */
+}
+
+/* Button styling */
+.button-primary {
+  display: block;
+  width: 100%;
+  background-color: #263642;
+  border: none;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button-primary:hover {
+  background-color: #34577c;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mt-3 {
+  margin-top: 1rem;
+}

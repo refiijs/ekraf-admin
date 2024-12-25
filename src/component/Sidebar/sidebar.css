@@ -1,0 +1,177 @@
+/* Sidebar styling */
+.sidebar {
+  background-color: #f1f3fa;
+  height: 100vh;
+  padding: 100px 8px 12px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: transform 0.3s ease, width 0.3s ease; /* Transisi smooth */
+  overflow: hidden; /* Menyembunyikan konten yang meluap */
+  white-space: nowrap; /* Mencegah teks meluap */
+  z-index: 999; /* Pastikan sidebar di atas konten lain */
+  width: 80px; /* Lebar saat terbuka */
+  border-radius: 30px; /* Membuat sidebar berbentuk bulat */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan */
+}
+
+/* Sidebar icon list */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 100%; /* Agar ul mengisi sidebar */
+  overflow-y: auto; /* Mengaktifkan scroll vertikal */
+}
+
+.sidebar ul::-webkit-scrollbar {
+  width: 0; /* Atur lebar scrollbar menjadi 0 untuk menyembunyikannya */
+}
+
+/* Sidebar saat tertutup - digeser keluar layar */
+.sidebar.closed {
+  transform: translateX(-100%); /* Sidebar tersembunyi sepenuhnya */
+}
+
+/* Ikon di sidebar */
+.sidebar ul li {
+  padding: 15px 0;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px; /* Fixed width untuk mencegah pergeseran */
+  height: 50px; /* Fixed height */
+  margin-bottom: 12px;
+  outline: none !important;
+  background-color: transparent;
+  border-radius: 50%; /* Membuat item berbentuk bulat */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan pada item */
+  border: none; /* Pastikan tidak ada border */
+  position: relative;
+}
+
+/* Ikon di dalam sidebar */
+.sidebar ul li svg {
+  width: 26px; /* Sesuaikan ukuran sesuai kebutuhan */
+  height: 26px;
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important; /* Pastikan tidak ada background */
+}
+.sidebar ul li.active {
+  background-color: #263642;
+  color: white; /* Ubah warna teks saat aktif */
+}
+.sidebar ul li.active svg {
+  fill: white; /* Ubah warna ikon saat aktif */
+}
+/* Hover effect */
+.sidebar ul li:hover {
+  background-color: #263642;
+  transform: scale(1); /* Zoom on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Tambahkan bayangan saat hover */
+}
+
+.sidebar ul li:hover svg {
+  color: #fff;
+  background-color: transparent !important; /* Pastikan tidak ada background saat hover */
+}
+
+/* Fokus dan state aktif */
+.sidebar ul li:focus,
+.sidebar ul li:active {
+  outline: none !important; /* Menghilangkan outline pada focus atau aktif */
+  border: none !important;
+  color: #fff;
+  background-color: #263642 !important;
+}
+
+/* Tooltip default */
+
+.sidebar ul li .popover {
+  position: absolute;
+  top: 50%;
+  left: 110%;
+  transform: translateY(-50%);
+  background-color: #940f0f;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: none; /* Tersembunyi awalnya */
+}
+
+.sidebar ul li.has-popover:hover .popover {
+  display: block; /* Tampilkan saat hover */
+}
+
+/* Tombol untuk toggle sidebar */
+.toggle-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  left: 75px; /* Posisi tombol di luar sidebar */
+  font-size: 24px;
+  color: #263642;
+  z-index: 1000; /* Agar tombol di atas sidebar */
+}
+
+/* Sidebar tertutup, geser tombol ke kiri */
+.sidebar.closed .toggle-btn {
+  left: 10px;
+}
+
+/* Tombol untuk membuka sidebar kembali */
+.open-btn {
+  position: fixed;
+  top: 20px;
+  left: 10px;
+  background-color: #263642;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 50%; /* Membuat tombol berbentuk bulat */
+  cursor: pointer;
+  font-size: 24px;
+  z-index: 1001; /* Pastikan tombol berada di atas */
+}
+
+/* Menu Sidebar Dash */
+
+/* Item Menu */
+.menu-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: #263642;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover Effect */
+.menu-item:hover {
+  background-color: #263642;
+  transform: scale(1.2); /* Zoom on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Ikon */
+.menu-item i {
+  font-size: 1.4rem; /* Ukuran default ikon */
+  transition: color 0.3s ease;
+}
+
+/* Hover pada Ikon */
+.menu-item:hover i {
+  color: #ffffff; /* Warna kuning untuk ikon saat hover */
+}
