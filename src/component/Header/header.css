@@ -1,6 +1,6 @@
 /* Navbar */
 .navbar-custom {
-  background-color: #f1f3fa;
+  background-color: #ffffff;
   padding: 14px 44px;
   width: 100%;
   display: flex;
@@ -28,8 +28,8 @@
 .navbar-custom .logout-btn {
   padding: 8px 20px;
   border: 1px solid #263642;
-  border-radius: 8px;
-  font-size: 14px;
+  border-radius: 6px;
+  font-size: 12px;
   color: #263642;
   background-color: transparent;
   font-weight: bold;
@@ -51,10 +51,10 @@
 }
 
 .navbar-custom .navbar-nav .nav-link {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
   color: #263642;
-  padding: 8px 16px;
+  padding: 8px 14px;
   text-decoration: none;
 }
 
@@ -92,30 +92,41 @@
   color: #fff;
   border-radius: 4px;
 }
-
-/* Responsiveness */
-@media (max-width: 768px) {
-  .navbar-custom {
-    padding: 10px;
-  }
-
-  .navbar-custom .logo-placeholder {
-    width: 50px;
-    height: 35px;
-  }
-
-  .navbar-custom .logout-btn {
-    padding: 8px 15px;
-    font-size: 14px;
-  }
-
-  .navbar-custom .navbar-nav {
+/* Responsive Design */
+@media (max-width: 992px) {
+  .navbar-nav {
     flex-direction: column;
-    gap: 10px;
+    text-align: center;
+    gap: 15px;
   }
 
-  .navbar-custom .navbar-nav .nav-link {
-    font-size: 14px;
-    padding: 10px 20px;
+  .navbar-collapse {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .logout-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar-custom {
+    padding: 0.5rem 1rem;
+  }
+
+  .navbar-brand img {
+    max-height: 40px;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 0.9rem;
+  }
+
+  .logout-btn {
+    font-size: 0.8rem;
+    padding: 6px 12px;
   }
 }

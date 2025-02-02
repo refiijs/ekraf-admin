@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { collection, addDoc } from "firebase/firestore";
-import { db } from "../../config/firebaseconfig"; // Sesuaikan path jika berbeda
+import { collection, addDoc, Timestamp } from "firebase/firestore"; // Import Timestamp
+import { db } from "../../config/firebaseconfig";
 import Header from "../Header/header";
 import "./layanan.css";
 
@@ -12,7 +12,7 @@ const FormLayanan = () => {
     speaker: "",
     role: "",
     image: "",
-    instagramUrl: "", // Tambahkan URL Instagram di sini
+    instagramUrl: "",
   });
   const [loading, setLoading] = useState(false);
 
@@ -73,7 +73,7 @@ const FormLayanan = () => {
       !formData.speaker ||
       !formData.role ||
       !formData.image ||
-      !formData.instagramUrl // Validasi tambahan untuk URL Instagram
+      !formData.instagramUrl
     ) {
       alert("Semua kolom wajib diisi, termasuk gambar dan URL Instagram.");
       return false;
@@ -88,7 +88,16 @@ const FormLayanan = () => {
     setLoading(true);
 
     try {
-      await addDoc(collection(db, "layanan"), formData);
+      // Menggabungkan date dan time menjadi satu objek Date
+      const combinedDateTime = new Date(`${formData.date}T${formData.time}`);
+
+      // Menyiapkan data dengan konversi tipe date & time ke Timestamp
+      const dataToSave = {
+        ...formData,
+        date: Timestamp.fromDate(combinedDateTime), // Ubah date ke Timestamp
+      };
+
+      await addDoc(collection(db, "layanan"), dataToSave);
       alert("Layanan berhasil ditambahkan!");
       setFormData({
         title: "",
@@ -97,7 +106,7 @@ const FormLayanan = () => {
         speaker: "",
         role: "",
         image: "",
-        instagramUrl: "", // Reset URL Instagram
+        instagramUrl: "",
       });
     } catch (error) {
       console.error("Error adding document: ", error);

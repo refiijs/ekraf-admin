@@ -17,11 +17,14 @@ const EditProduk = () => {
   const [formData, setFormData] = useState({
     namaProduk: "",
     rangeHarga: "",
-    imageURL: "",
+    imageURL1: "",
+    imageURL2: "",
     whatsapp: "",
     instagram: "",
     alamat: "",
     alamatURL: "",
+    tagline: "",
+    history: "",
     deskripsi: "",
   });
   const [loading, setLoading] = useState(true);
@@ -66,7 +69,7 @@ const EditProduk = () => {
     }));
   };
 
-  const handleUploadImage = () => {
+  const handleUploadImage = (type) => {
     if (window.cloudinary) {
       window.cloudinary.openUploadWidget(
         {
@@ -82,10 +85,18 @@ const EditProduk = () => {
             console.error("Error uploading image:", error);
           } else if (result.event === "success") {
             const uploadedImageURL = result.info.secure_url;
-            setFormData((prevData) => ({
-              ...prevData,
-              imageURL: uploadedImageURL,
-            }));
+            if (type === "small") {
+              setFormData((prevData) => ({
+                ...prevData,
+                imageURL1: uploadedImageURL,
+              }));
+            } else {
+              setFormData((prevData) => ({
+                ...prevData,
+                imageURL2: uploadedImageURL,
+              }));
+            }
+            console.log("Uploaded image URL:", uploadedImageURL);
             alert("Gambar berhasil diunggah!");
           }
         }
@@ -97,7 +108,7 @@ const EditProduk = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.imageURL) {
+    if (!formData.imageURL1 || !formData.imageURL2) {
       alert("Gambar belum diunggah. Silakan unggah gambar terlebih dahulu.");
       return;
     }
@@ -152,12 +163,6 @@ const EditProduk = () => {
                 />
               </Form.Group>
             </Col>
-            <Col md={4}>
-              <Form.Group controlId="formImageURL">
-                <Form.Label>Image URL</Form.Label>
-                <Form.Control type="text" value={formData.imageURL} readOnly />
-              </Form.Group>
-            </Col>
           </Row>
           <Row>
             <Col md={4}>
@@ -184,6 +189,8 @@ const EditProduk = () => {
                 />
               </Form.Group>
             </Col>
+          </Row>
+          <Row>
             <Col md={4}>
               <Form.Group controlId="formAlamat">
                 <Form.Label>Alamat</Form.Label>
@@ -196,9 +203,7 @@ const EditProduk = () => {
                 />
               </Form.Group>
             </Col>
-          </Row>
-          <Row>
-            <Col md={12}>
+            <Col md={4}>
               <Form.Group controlId="formAlamatURL">
                 <Form.Label>Alamat URL (Google Maps)</Form.Label>
                 <Form.Control
@@ -211,6 +216,28 @@ const EditProduk = () => {
               </Form.Group>
             </Col>
           </Row>
+          <Form.Group controlId="formTagline">
+            <Form.Label>Tagline Produk</Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={3}
+              name="tagline"
+              value={formData.tagline}
+              onChange={handleInputChange}
+              required
+            />
+          </Form.Group>
+          <Form.Group controlId="formHistory">
+            <Form.Label>History Produk</Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={3}
+              name="history"
+              value={formData.history}
+              onChange={handleInputChange}
+              required
+            />
+          </Form.Group>
           <Form.Group controlId="formDeskripsi">
             <Form.Label>Deskripsi Produk</Form.Label>
             <Form.Control
@@ -222,13 +249,31 @@ const EditProduk = () => {
               required
             />
           </Form.Group>
-          <Button
-            variant="dark"
-            onClick={handleUploadImage}
-            className="mt-3 form-produk-button"
-          >
-            Upload Gambar
-          </Button>
+
+          <div className="form-group">
+            <Form.Control
+              type="text"
+              value={formData.imageURL1}
+              readOnly
+              placeholder="URL Gambar Kecil akan otomatis diisi"
+            />
+            <Button variant="dark" onClick={() => handleUploadImage("small")}>
+              Upload Gambar
+            </Button>
+          </div>
+
+          <div className="form-group">
+            <Form.Control
+              type="text"
+              value={formData.imageURL2}
+              readOnly
+              placeholder="URL Gambar Besar akan otomatis diisi"
+            />
+            <Button variant="dark" onClick={() => handleUploadImage("large")}>
+              Upload Gambar
+            </Button>
+          </div>
+
           <Button
             variant="dark"
             type="submit"

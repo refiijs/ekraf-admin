@@ -2,7 +2,7 @@
 .form-news-container {
   max-width: 1200px; /* Batas lebar container */
   margin: 0 auto; /* Memusatkan container */
-  padding: 120px;
+  padding: 9rem 4rem;
   box-sizing: border-box;
   border-radius: 10px; /* Tepi melengkung */
 }
@@ -285,7 +285,10 @@
   margin-bottom: 20px;
   text-align: center;
 }
-
+.edit-btn,
+.delete-btn {
+  font-size: 0.9rem;
+}
 .detail-kabar-instagram {
   display: inline-block;
   font-size: 1rem;
@@ -301,4 +304,85 @@
 
 .detail-kabar-instagram:hover {
   background-color: #e05858; /* Warna hover Instagram */
+}
+
+@media (max-width: 768px) {
+  .content-header {
+    display: flex;
+    justify-content: space-between; /* Menjaga jarak antara judul dan tombol */
+    align-items: center; /* Menjaga elemen tetap sejajar */
+    flex-direction: row; /* Pastikan elemen dalam satu baris */
+    width: 100%; /* Pastikan lebar penuh */
+  }
+
+  .create-btn {
+    margin-top: 0; /* Hapus margin atas agar sejajar */
+    padding: 6px 20px;
+  }
+  .news-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+  }
+
+  .news-item {
+    width: 100%;
+    max-width: 400px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .news-image {
+    display: none !important;
+  }
+
+  .news-info {
+    padding: 4px;
+  }
+
+  .news-info h3 {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .news-info p {
+    font-size: 0.8rem;
+  }
+
+  .news-actions {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+  }
+
+  .instagram-button {
+    margin-top: 30px;
+    padding: 10px 20px;
+    font-size: 0.6rem !important;
+    font-weight: bold;
+    color: #fff;
+    background-color: #e1306c;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .instagram-button:hover {
+    background-color: #c1275a;
+  }
+}
+@media (max-width: 480px) {
+  .news-list {
+    grid-template-columns: 1fr;
+  }
+  .news-image {
+    height: 150px;
+  }
 }

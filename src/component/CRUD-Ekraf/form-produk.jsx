@@ -10,12 +10,15 @@ const FormProduk = () => {
   const [selectedCollection, setSelectedCollection] = useState("Kuliner");
   const [namaProduk, setNamaProduk] = useState("");
   const [rangeHarga, setRangeHarga] = useState("");
-  const [imageURL, setImageURL] = useState(""); // URL gambar dari Cloudinary
+  const [imageURL1, setImageURL1] = useState(""); // URL gambar dari Cloudinary
+  const [imageURL2, setImageURL2] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
   const [instagram, setInstagram] = useState("");
   const [alamat, setAlamat] = useState("");
   const [alamatURL, setAlamatURL] = useState("");
   const [deskripsi, setDeskripsi] = useState("");
+  const [tagline, setTagline] = useState("");
+  const [history, setHistory] = useState("");
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
@@ -31,23 +34,27 @@ const FormProduk = () => {
     };
   }, []);
 
-  const handleUploadImage = () => {
+  const handleUploadImage = (type) => {
     if (window.cloudinary) {
       window.cloudinary.openUploadWidget(
         {
-          cloudName: "dnz2pxcrd", // Ganti dengan Cloud Name Anda
-          uploadPreset: "img_ekraf", // Ganti dengan Upload Preset Anda
+          cloudName: "dnz2pxcrd",
+          uploadPreset: "img_ekraf",
           sources: ["local", "url", "camera"],
           folder: "img/ekraf",
           multiple: false,
-          maxFileSize: 5000000, // Maksimal ukuran file 5MB
+          maxFileSize: 5000000,
         },
         (error, result) => {
           if (error) {
             console.error("Error uploading image:", error);
           } else if (result.event === "success") {
             const uploadedImageURL = result.info.secure_url;
-            setImageURL(uploadedImageURL); // Simpan URL gambar ke state
+            if (type === "small") {
+              setImageURL1(uploadedImageURL);
+            } else {
+              setImageURL2(uploadedImageURL);
+            }
             console.log("Uploaded image URL:", uploadedImageURL);
             alert("Gambar berhasil diunggah!");
           }
@@ -60,22 +67,23 @@ const FormProduk = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     // Validasi apakah gambar telah diunggah
-    if (!imageURL) {
+    if (!imageURL1) {
       alert("Gambar belum diunggah. Silakan unggah gambar terlebih dahulu.");
       return;
     }
-
     const newProduct = {
       namaProduk,
       rangeHarga,
-      imageURL, // URL gambar yang diunggah
+      imageURL1, // URL gambar yang diunggah
+      imageURL2,
       whatsapp,
       instagram,
       alamat,
       alamatURL,
       deskripsi,
+      tagline,
+      history,
     };
 
     try {
@@ -88,12 +96,15 @@ const FormProduk = () => {
       // Reset form setelah data berhasil disimpan
       setNamaProduk("");
       setRangeHarga("");
-      setImageURL(""); // Reset URL gambar
+      setImageURL1(""); // Reset URL gambar
+      setImageURL2(""); // Reset URL gambar
       setWhatsapp("");
       setInstagram("");
       setAlamat("");
       setAlamatURL("");
       setDeskripsi("");
+      setTagline("");
+      setHistory("");
     } catch (error) {
       console.error(
         `Error menambahkan data ke koleksi ${selectedCollection}:`,
@@ -163,17 +174,6 @@ const FormProduk = () => {
                 />
               </Form.Group>
             </Col>
-            <Col md={4}>
-              <Form.Group controlId="formImageURL">
-                <Form.Label>Image URL</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="URL Gambar akan otomatis diisi"
-                  value={imageURL}
-                  readOnly // Tidak dapat diubah oleh pengguna
-                />
-              </Form.Group>
-            </Col>
           </Row>
           <Row>
             <Col md={4}>
@@ -200,6 +200,8 @@ const FormProduk = () => {
                 />
               </Form.Group>
             </Col>
+          </Row>
+          <Row>
             <Col md={4}>
               <Form.Group controlId="formAlamat">
                 <Form.Label>Alamat</Form.Label>
@@ -212,9 +214,7 @@ const FormProduk = () => {
                 />
               </Form.Group>
             </Col>
-          </Row>
-          <Row>
-            <Col md={12}>
+            <Col md={4}>
               <Form.Group controlId="formAlamatURL">
                 <Form.Label>Alamat URL (Google Maps)</Form.Label>
                 <Form.Control
@@ -227,8 +227,32 @@ const FormProduk = () => {
               </Form.Group>
             </Col>
           </Row>
+          <Form.Group controlId="formTagline">
+            <Form.Label>Tagline Produk</Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={3}
+              placeholder="Masukkan Tagline Produk"
+              value={tagline}
+              onChange={(e) => setTagline(e.target.value)}
+              required
+            />
+          </Form.Group>
+
+          <Form.Group controlId="formHistory">
+            <Form.Label>History Produk</Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={3}
+              placeholder="Masukkan History Produk"
+              value={history}
+              onChange={(e) => setHistory(e.target.value)}
+              required
+            />
+          </Form.Group>
+
           <Form.Group controlId="formDeskripsi">
-            <Form.Label>Deskripsi Produk</Form.Label>
+            <Form.Label> Deskripsi Produk</Form.Label>
             <Form.Control
               as="textarea"
               rows={3}
@@ -238,13 +262,31 @@ const FormProduk = () => {
               required
             />
           </Form.Group>
-          <Button
-            variant="dark"
-            onClick={handleUploadImage}
-            className="mt-3 form-produk-button"
-          >
-            Upload Gambar
-          </Button>
+
+          <div className="form-group">
+            <Form.Control
+              type="text"
+              value={imageURL1}
+              readOnly
+              placeholder="URL Gambar Kecil akan otomatis diisi"
+            />
+            <Button variant="dark" onClick={() => handleUploadImage("small")}>
+              Upload Gambar
+            </Button>
+          </div>
+
+          <div className="form-group">
+            <Form.Control
+              type="text"
+              value={imageURL2}
+              readOnly
+              placeholder="URL Gambar Besar akan otomatis diisi"
+            />
+            <Button variant="dark" onClick={() => handleUploadImage("large")}>
+              Upload Gambar
+            </Button>
+          </div>
+
           <Button
             variant="dark"
             type="submit"

@@ -113,9 +113,9 @@ const ListProduk = ({ collectionName = "Kuliner" }) => {
               style={{ cursor: "pointer" }}
             >
               <div className="item-image">
-                {produk.imageURL ? (
+                {produk.imageURL1 ? (
                   <img
-                    src={produk.imageURL}
+                    src={produk.imageURL1}
                     alt={produk.namaProduk}
                     style={{
                       width: "70px",
@@ -133,7 +133,7 @@ const ListProduk = ({ collectionName = "Kuliner" }) => {
 
               <div className="item-info">
                 <h3>{produk.namaProduk || "Nama produk tidak tersedia"}</h3>
-                <p>{produk.deskripsi || "Deskripsi tidak tersedia"}</p>
+                <p>{produk.tagline || "Deskripsi tidak tersedia"}</p>
               </div>
               <div className="item-actions">
                 <button onClick={(e) => handleEdit(produk, e)}>

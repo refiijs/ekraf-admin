@@ -4,7 +4,7 @@
   height: 100vh;
   align-items: center;
   justify-content: center;
-  background-color: #f8f9fc; /* Warna latar belakang halaman */
+  background-color: #ffffff; /* Warna latar belakang halaman */
 }
 
 .wrapper {
@@ -119,4 +119,45 @@ h1 {
 
 .mt-3 {
   margin-top: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .left-section {
+    display: none; /* Sembunyikan bagian kiri pada perangkat kecil */
+  }
+
+  .right-section {
+    padding: 30px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+
+  .right-section {
+    padding: 20px 15px;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  .input-group .form-control {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .button-primary {
+    font-size: 13px;
+    padding: 8px;
+  }
 }

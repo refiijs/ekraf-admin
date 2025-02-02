@@ -2,7 +2,7 @@
 .form-layanan-container {
   max-width: 1200px; /* Batas lebar container */
   margin: 0 auto; /* Memusatkan container */
-  padding: 120px;
+  padding: 9rem 4rem;
   box-sizing: border-box;
   border-radius: 10px; /* Tepi melengkung */
 }
@@ -235,14 +235,18 @@
 }
 
 /* Detail Layanan */
-/* Detail Layanan */
+
 .detail-layanan-container {
   max-width: 800px;
-  margin: 12 0px auto;
-  padding: 60px;
+  margin: 120px auto;
+  padding: 80px 20px;
   background-color: #ffffff;
+  border: 1px solid #edeeee;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .detail-layanan-title {
@@ -256,17 +260,19 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 50px;
+  gap: 4rem;
+  text-align: left;
 }
 
 .detail-layanan-image {
   max-width: 40%;
   height: 100%; /* Pastikan kontainer gambar mengambil semua tinggi yang tersedia */
   border-radius: 8px;
+  margin-left: 4rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* Menjaga tombol berada di bawah */
+  justify-content: flex-end;
 }
 
 .detail-layanan-info {
@@ -296,6 +302,127 @@
   cursor: pointer;
   text-align: center;
   text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.instagram-button:hover {
+  background-color: #c1275a;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+  }
+
+  .col-md-4 {
+    min-width: 100%;
+  }
+
+  .form-layanan-container {
+    padding: 15px;
+  }
+  .content-header {
+    display: flex;
+    justify-content: space-between; /* Menjaga jarak antara judul dan tombol */
+    align-items: center; /* Menjaga elemen tetap sejajar */
+    flex-direction: row; /* Pastikan elemen dalam satu baris */
+    width: 100%; /* Pastikan lebar penuh */
+  }
+  .content-header h2 {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+
+  .create-btn {
+    margin-top: 0; /* Hapus margin atas agar sejajar */
+    padding: 6px 20px;
+  }
+  .layanan-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+  }
+
+  .layanan-item {
+    width: 100%;
+    max-width: 400px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+  }
+  .layanan-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .layanan-image {
+    display: none !important;
+  }
+  .padding-info {
+    padding: 4px;
+  }
+  .layanan-info h3 {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .layanan-info p {
+    font-size: 0.8rem;
+  }
+
+  .layanan-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+/* Detail Layanan */
+.detail-layanan-container {
+  max-width: 800px;
+  margin: 80px auto;
+  padding: 40px 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.detail-layanan-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.detail-layanan-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.detail-layanan-image {
+  width: 50%;
+  text-align: center;
+  max-width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.edit-btn,
+.delete-btn {
+  font-size: 0.9rem;
+}
+.instagram-button {
+  margin-top: 30px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #e1306c;
+  border-radius: 5px;
+  cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
